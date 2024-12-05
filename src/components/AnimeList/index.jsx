@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const AnimeList = ({ api }) => {
     return (
-        <div className="grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-4 px-4 pt-1 pb-10">
+        <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-3 grid-cols-2 lg:gap-10 md:gap-6 gap-4 px-10 pt-1 pb-10">
             {api.data?.map((anime) => {
                 return (
                     <Link
@@ -15,8 +15,8 @@ const AnimeList = ({ api }) => {
                         <Image
                             src={anime.images.webp.image_url}
                             alt={anime.title}
-                            width={350}
-                            height={250}
+                            width={250}
+                            height={300}
                             className="w-full max-h-64 object-cover transition-transform duration-300"
                         />
                         {/* Judul Anime dengan efek hover */}

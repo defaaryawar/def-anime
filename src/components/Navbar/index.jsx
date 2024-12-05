@@ -8,7 +8,7 @@ const Navbar = () => {
                 {/* Kiri: Logo */}
                 <Link 
                     href="/" 
-                    className="font-bold text-2xl ml-4 outline-none pb-2 hover:text-opacity-80 transition-all duration-300"
+                    className="font-bold text-2xl ml-4 outline-none pb-2 hover:text-opacity-80 transition-all duration-300 text-base-300"
                 >
                     defAnime.
                 </Link>

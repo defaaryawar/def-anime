@@ -43,7 +43,7 @@ const Page = () => {
     }, [page]);
 
     return (
-        <Container maxWidth="2xl" className='text-center' sx={{ paddingTop: 4 }}>
+        <div className='text-center lg:px-4 pt-4 md:px-3 sm:px-2 px-0'>
             <HeaderMenu title={`ANIME TERPOPULER #${page}`} />
             {loading ? (
                 <span className="loading loading-infinity loading-lg text-colorPrimarySaya"></span>
@@ -53,7 +53,7 @@ const Page = () => {
                     <Pagination page={page} lastPage={topAnime.pagination?.last_visible_page} setPage={setPage} />
                 </>
             )}
-        </Container>
+        </div>
     );
 };
 

@@ -3,12 +3,12 @@ import InputSearch from "./InputSearch.jsx";
 
 const Navbar = () => {
     return (
-        <header className="sticky-navbar shadow-md outline-none">
+        <header className="sticky-navbar shadow-md outline-none bg-colorPrimarySaya">
             <div className="flex md:flex-row flex-col justify-between p-5 outline-none">
                 {/* Kiri: Logo */}
                 <Link 
                     href="/" 
-                    className="font-bold text-colorPrimarySaya text-2xl ml-4 outline-none pb-2 hover:text-opacity-80 transition-all duration-300"
+                    className="font-bold text-2xl ml-4 outline-none pb-2 hover:text-opacity-80 transition-all duration-300"
                 >
                     defAnime.
                 </Link>

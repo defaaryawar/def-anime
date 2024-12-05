@@ -3,7 +3,7 @@ import InputSearch from "./InputSearch.jsx";
 
 const Navbar = () => {
     return (
-        <header className="sticky-navbar shadow-md outline-none bg-colorPrimarySaya">
+        <header className="sticky-navbar sticky shadow-md outline-none bg-colorPrimarySaya">
             <div className="flex md:flex-row flex-col justify-between p-5 outline-none">
                 {/* Kiri: Logo */}
                 <Link 

@@ -8,9 +8,9 @@ const StatCard = ({ icon, label, value }) => {
     <div className="p-4 rounded-lg shadow-md w-36 border-2 border-colorPrimarySaya flex-shrink-0">
       <div className="flex items-center gap-2 mb-1">
         {icon}
-        <h3 className="text-sm font-semibold text-white select-none">{label}</h3>
+        <h3 className="text-sm font-semibold select-none">{label}</h3>
       </div>
-      <p className="text-md font-bold text-white select-none">{value}</p>
+      <p className="text-md font-bold select-none">{value}</p>
     </div>
   );
 };
@@ -22,8 +22,8 @@ const Page = async ({ params: { id } }) => {
     <div className="bg-transparent min-h-screen">
       {/* Judul dan Tahun Anime */}
       <div className="p-4 mb-6 shadow-lg">
-        <h1 className="text-xl font-semibold text-white mb-2">{anime.data.title}</h1>
-        <p className="text-lg text-white opacity-80">{anime.data.year}</p>
+        <h1 className="text-xl font-semibold mb-2">{anime.data.title}</h1>
+        <p className="text-lg opacity-80">{anime.data.year}</p>
       </div>
 
       {/* Statistik Anime (Rank, Score, Popularity, dll) */}
@@ -91,14 +91,14 @@ const Page = async ({ params: { id } }) => {
         </div>
 
         {/* Deskripsi Anime */}
-        <div className="flex-1 text-lg text-white mt-4 md:mt-0">
+        <div className="flex-1 text-lg  mt-4 md:mt-0">
             <h1 className="text-xl mb-2 opacity-90">Synopsis</h1>
           <p className="text-justify leading-relaxed opacity-80">{anime.data.synopsis}</p>
 
           {/* Rating */}
           <div className="flex items-center mt-4">
             <FaStar className="text-colorPrimarySaya text-lg" />
-            <p className="ml-2 text-md font-bold text-white">{anime.data.rating}</p>
+            <p className="ml-2 text-md font-bold ">{anime.data.rating}</p>
           </div>
         </div>
       </div>

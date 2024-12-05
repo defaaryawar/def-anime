@@ -1,6 +1,17 @@
 export const getAnimeResponse = async (resource, query = "", retries = 3) => {
+    if (!resource || typeof resource !== 'string') {
+        console.error("Resource tidak valid:", resource);
+        return null;
+    }
+
+    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+    if (!baseUrl) {
+        console.error("Base URL tidak tersedia.");
+        return null;
+    }
+
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${resource}?${query}`);
+        const response = await fetch(`${baseUrl}/${resource}?${query}`);
         if (!response.ok) {
             throw new Error("API response tidak berhasil.");
         }
@@ -23,7 +34,7 @@ export const getAnimeResponse = async (resource, query = "", retries = 3) => {
 export const getNestedAnimeResponse = async (resource, objectProperty) => {
     try {
         const response = await getAnimeResponse(resource);
-        if (!response) {
+        if (!response || !response.data) {
             throw new Error("Tidak ada data yang dapat diproses.");
         }
         return response.data.flatMap(item => item[objectProperty]);

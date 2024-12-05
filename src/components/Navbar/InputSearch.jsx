@@ -32,9 +32,9 @@ const InputSearch = () => {
     };
 
     return (
-        <div className="flex items-center join px-4">
+        <div className="flex items-center join px-4 bg-transparent">
             <input
-                className={`px-4 py-2 w-full rounded-md border ${isValid ? 'border-gray-300' : 'border-red-500'} focus:outline-none focus:ring-2 focus:ring-colorPrimarySaya focus:border-transparent join-item transition-all duration-300 outline-none bg-opacity-65`}
+                className={`px-4 py-2 w-full rounded-md border ${isValid ? 'border-gray-300' : 'border-red-500'} focus:outline-none focus:ring-2 focus:ring-colorPrimarySaya focus:border-transparent join-item transition-all duration-300 outline-none bg-base-300`}
                 placeholder="Search"
                 ref={searchRef}
                 onKeyDown={handleSearch}

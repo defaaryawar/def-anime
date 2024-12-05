@@ -1,9 +1,11 @@
+"use client"
+
 import React, { useEffect, useState } from 'react';
 import HeaderMenu from '@/components/utilities/HeaderMenu';
 import Pagination from '@/components/utilities/Pagination';
 import AnimeList from '@/components/AnimeList';
 import { getAnimeResponse } from '@/libs/api-libs';
-import { Container, CircularProgress } from '@mui/material';
+import { Container } from '@mui/material';
 
 const Page = () => {
     // Memperoleh nilai halaman dari sessionStorage jika ada, jika tidak maka default ke 1

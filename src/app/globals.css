@@ -31,7 +31,6 @@ img:hover {
     position: sticky;
     top: 0;
     z-index: 10;
-    background-color: #f8f8f8; /* atau sesuaikan dengan warna navbar */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Menambahkan shadow untuk memperjelas navbar */
     transition: background-color 0.3s ease; /* Animasi untuk background saat scroll */
 }

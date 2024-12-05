@@ -22,7 +22,7 @@ const Page = async ({ params: { id } }) => {
     <div className="bg-transparent min-h-screen">
       {/* Judul dan Tahun Anime */}
       <div className="p-4 mb-6 shadow-lg">
-        <h1 className="text-xl font-semibold mb-2">{anime.data.title}</h1>
+        <h1 className="text-xl font-semibold mb-2 text-colorPrimarySaya">{anime.data.title}</h1>
         <p className="text-lg opacity-80">{anime.data.year}</p>
       </div>
 
@@ -92,7 +92,7 @@ const Page = async ({ params: { id } }) => {
 
         {/* Deskripsi Anime */}
         <div className="flex-1 text-lg  mt-4 md:mt-0">
-            <h1 className="text-xl mb-2 opacity-90">Synopsis</h1>
+            <h1 className="text-xl mb-2 opacity-90 font-bold">Synopsis</h1>
           <p className="text-justify leading-relaxed opacity-80">{anime.data.synopsis}</p>
 
           {/* Rating */}

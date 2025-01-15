@@ -1,9 +1,9 @@
 const HeaderMenu = ({ title }) => {
     return (
-        <div>
-            <h3 className="text-center text-2xl text-colorPrimarySaya font-semibold py-2">{title}</h3>
+        <div className="bg-transparent py-2">
+            <h3 className="text-center text-3xl text-purple-600 font-bold">{title}</h3>
         </div>
-    )
-}
+    );
+};
 
-export default HeaderMenu
+export default HeaderMenu;

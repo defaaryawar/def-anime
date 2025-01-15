@@ -2,16 +2,16 @@
 
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
+import { Search } from "lucide-react";
 
 const InputSearch = () => {
     const searchRef = useRef();
     const router = useRouter();
-    const [isValid, setIsValid] = useState(true); // Untuk menyimpan status validasi
+    const [isValid, setIsValid] = useState(true);
 
     const handleSearch = (event) => {
         const keyword = searchRef.current.value.trim();
-        
-        // Jangan lakukan pencarian jika input kosong atau hanya spasi
+
         if (!keyword) return;
 
         if (event.key === "Enter" || event.type === "click") {
@@ -20,31 +20,32 @@ const InputSearch = () => {
         }
     };
 
-    // Validasi input agar tidak diawali dengan spasi
     const handleInputChange = () => {
         const keyword = searchRef.current.value;
         if (keyword.startsWith(" ")) {
-            searchRef.current.value = ""; // Reset input jika diawali spasi
-            setIsValid(false); // Menandakan input tidak valid
+            searchRef.current.value = "";
+            setIsValid(false);
         } else {
-            setIsValid(true); // Input valid jika tidak diawali spasi
+            setIsValid(true);
         }
     };
 
     return (
-        <div className="flex items-center join px-4 bg-transparent">
+        <div className="relative">
             <input
-                className={`px-4 py-2 w-full rounded-md border ${isValid ? 'border-gray-300' : 'border-red-500'} focus:outline-none focus:ring-2 border-2 border-base-300 join-item transition-all duration-300 outline-none bg-base-300`}
-                placeholder="Search"
+                type="text"
+                placeholder="Search anime, characters..."
+                className={`w-80 px-4 py-2 rounded-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent ${!isValid && "border-red-500 focus:ring-red-500"
+                    }`}
                 ref={searchRef}
                 onKeyDown={handleSearch}
-                onInput={handleInputChange} // Validasi input setiap ada perubahan
+                onInput={handleInputChange}
             />
             <button
-                className="px-4 py-2  rounded-md join-item border-2 transition-all duration-300 font-bold"
+                className="absolute right-0 top-0 bottom-0 px-4 rounded-r-full bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:from-purple-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 onClick={handleSearch}
             >
-                Search
+                <Search className="h-6 w-6" />
             </button>
         </div>
     );

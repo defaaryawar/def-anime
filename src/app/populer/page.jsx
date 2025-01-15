@@ -1,20 +1,19 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from 'react';
 import HeaderMenu from '@/components/utilities/HeaderMenu';
 import Pagination from '@/components/utilities/Pagination';
 import AnimeList from '@/components/AnimeList';
 import { getAnimeResponse } from '@/libs/api-libs';
-import { Container } from '@mui/material';
+import { Container, Typography, CircularProgress } from '@mui/material';
 
 const Page = () => {
-    // Memperoleh nilai halaman dari sessionStorage jika ada, jika tidak maka default ke 1
     const [page, setPage] = useState(() => {
         if (typeof window !== 'undefined') {
             const savedPage = sessionStorage.getItem('animePage');
             return savedPage ? parseInt(savedPage, 10) : 1;
         }
-        return 1; // fallback default jika di server-side
+        return 1;
     });
     const [topAnime, setTopAnime] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -37,23 +36,33 @@ const Page = () => {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            // Menyimpan nilai halaman ke sessionStorage setiap kali page berubah
             sessionStorage.setItem('animePage', page);
         }
     }, [page]);
 
     return (
-        <div className='text-center lg:px-4 pt-4 md:px-3 sm:px-2 px-0'>
-            <HeaderMenu title={`ANIME TERPOPULER #${page}`} />
-            {loading ? (
-                <span className="loading loading-infinity loading-lg text-colorPrimarySaya"></span>
-            ) : (
-                <>
-                    <AnimeList api={topAnime} />
-                    <Pagination page={page} lastPage={topAnime.pagination?.last_visible_page} setPage={setPage} />
-                </>
-            )}
-        </div>
+        <Container maxWidth="lg" className="py-8">
+            <div className="text-center">
+                <HeaderMenu title={`POPULAR ANIME #${page}`} />
+                {loading ? (
+                    <div className="flex justify-center mt-8">
+                        <CircularProgress className="text-purple-500" />
+                    </div>
+                ) : (
+                    <>
+                        <Typography variant="h6" className="mt-8 mb-4 text-gray-600">
+                            Discover the most popular anime series
+                        </Typography>
+                        <AnimeList api={topAnime} />
+                        <Pagination
+                            page={page}
+                            lastPage={topAnime.pagination?.last_visible_page}
+                            setPage={setPage}
+                        />
+                    </>
+                )}
+            </div>
+        </Container>
     );
 };
 

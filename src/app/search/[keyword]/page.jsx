@@ -1,23 +1,57 @@
-import { getAnimeResponse } from "@/libs/api-libs";
-import AnimeList from "@/components/AnimeList";
-import Header from "@/components/AnimeList/Header";
+"use client";
 
-const Page = async ({ params }) => {
-    const { keyword } = await params;
+import { useState, useEffect } from 'react';
+import { getAnimeResponse } from '@/libs/api-libs';
+import AnimeList from '@/components/AnimeList';
+import Header from '@/components/AnimeList/Header';
+import Pagination from '@/components/utilities/Pagination';
 
-    const decodedKeyword = decodeURI (keyword)
-    console.log (decodedKeyword)
+const ITEMS_PER_PAGE = 20;
 
-    const searchAnime = await getAnimeResponse("anime", `q=${decodedKeyword}`)
+const Page = ({ params }) => {
+    const { keyword } = params;
+    const decodedKeyword = decodeURI(keyword);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [searchAnime, setSearchAnime] = useState(null);
+    const [totalItems, setTotalItems] = useState(0);
+
+    useEffect(() => {
+        const fetchAnime = async () => {
+            const response = await getAnimeResponse(
+                'anime',
+                `q=${decodedKeyword}&page=${currentPage}&limit=${ITEMS_PER_PAGE}`
+            );
+            setSearchAnime(response);
+            setTotalItems(response.pagination.items.total);
+        };
+
+        fetchAnime();
+    }, [decodedKeyword, currentPage]);
+
+    if (!searchAnime) {
+        return <div>Loading...</div>;
+    }
+
+    const lastPage = Math.ceil(totalItems / ITEMS_PER_PAGE);
 
     return (
-        <>
-            <section>
-                <Header title={`Pencarian untuk ${decodedKeyword}`} />
+        <section className="container mx-auto px-4 py-8">
+            <Header title={`Search Results for "${decodedKeyword}"`} />
+            <div className="mt-8">
                 <AnimeList api={searchAnime} />
-            </section>
-        </>
+            </div>
+            {totalItems > ITEMS_PER_PAGE && (
+                <div className="mt-8">
+                    <Pagination
+                        page={currentPage}
+                        lastPage={lastPage}
+                        setPage={setCurrentPage}
+                    />
+                </div>
+            )}
+        </section>
     );
-}
+};
 
 export default Page;
